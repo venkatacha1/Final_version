@@ -1,0 +1,67 @@
+.star-border-container {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    background: transparent;
+    padding: 1px;
+    /* The width of the border */
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.star-border-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.star-border-bg {
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg,
+            transparent 0 60deg,
+            var(--star-color) 60deg 120deg,
+            transparent 120deg 180deg,
+            var(--star-color) 180deg 240deg,
+            transparent 240deg 300deg,
+            var(--star-color) 300deg 360deg);
+    animation: star-border-rotate var(--star-speed) linear infinite;
+    z-index: -2;
+    opacity: 0.2;
+    /* Subtle by default */
+    transition: opacity 0.3s ease;
+}
+
+.star-border-container:hover .star-border-bg {
+    opacity: 1;
+    /* Bright on hover */
+}
+
+/* Make it look like a single star/comet by altering the gradient */
+.star-border-bg.single-star {
+    background: conic-gradient(from 0deg,
+            transparent 0 340deg,
+            var(--star-color) 360deg);
+}
+
+.star-border-content-wrapper {
+    position: relative;
+    background: var(--bg-color, white);
+    border-radius: 11px;
+    /* 1px less than container */
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+@keyframes star-border-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

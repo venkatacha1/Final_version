@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+}
+
+@layer base {
+    body {
+        @apply font-text text-theme-text bg-white font-light;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-title text-theme-heading font-normal;
+    }
+
+    /* Global Form Enhancements for Mobile */
+    @media (max-width: 768px) {
+        .form-control, .form-select {
+            height: auto !important;
+            padding-top: 12px !important;
+            padding-bottom: 12px !important;
+            font-size: 16px !important;
+        }
+        
+        label {
+            font-size: 14px !important;
+            margin-bottom: 8px !important;
+        }
+
+        button[type="submit"] {
+            padding-top: 14px !important;
+            padding-bottom: 14px !important;
+            font-size: 16px !important;
+        }
+    }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #a68921;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #8b731c;
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #a68921 transparent;
+}
